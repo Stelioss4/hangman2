@@ -17,6 +17,7 @@
                 const string WORD5 = "project";
                 const string WORD6 = "beach";
                 const string WORD7 = "keyboard";
+                const string WORD8 = "astronaut";
                 
                 string gameWord = "";
                 string key = "";
@@ -33,7 +34,8 @@
                 WORD4,
                 WORD5,
                 WORD6,
-                WORD7
+                WORD7,
+                WORD8
                 };
                 gameWord = theWord[new Random().Next(0, theWord.Count - 1)];
                 while (tries != 0)

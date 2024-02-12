@@ -6,17 +6,8 @@
         {
             while (true)
             {
-                Console.WriteLine("Welcome to Hangman! \n");
-
                 const string PLAY_CHOICE = "Y";
-
-
-                string gameWord = "";
-                string key = "";
-                string letter = "";
-                string result = "";
-                int lettersleft = 0;
-                int tries = 5;
+                const int TRIES = 5;
 
                 List<string> letterList = new List<string>();
                 List<string> wordList = new List<string>()
@@ -31,21 +22,21 @@
                     "astronaut"
                 };
 
-                Random rng = new Random();
-                gameWord = wordList[new Random().Next(0, wordList.Count - 1)];
+                string gameWord = wordList[new Random().Next(0, wordList.Count - 1)];
 
-                while (tries != 0)
+                Console.WriteLine("Welcome to Hangman! \n");
+
+                int lives = TRIES;
+                while (lives != 0)
                 {
-                    lettersleft = 0;
+                    int lettersleft = 0;
                     foreach (var character in gameWord)
                     {
-                        letter = character.ToString();
-
+                        string letter = character.ToString().ToLower();
 
                         if (letterList.Contains(letter))
                         {
                             Console.Write(letter);
-
                         }
                         else
                         {
@@ -53,6 +44,7 @@
                             lettersleft++;
                         }
                     }
+
                     Console.WriteLine(string.Empty);
                     Console.WriteLine(String.Join(" , ", letterList));
 
@@ -62,14 +54,12 @@
                     }
 
                     Console.WriteLine("\nplease enter a letter\n");
-                    key = Console.ReadKey().KeyChar.ToString().ToLower();
+                    string key = Console.ReadKey().KeyChar.ToString().ToLower();
                     Console.WriteLine(string.Empty);
 
                     if (letterList.Contains(key))
                     {
                         Console.WriteLine($"\nthe letter {key} is already given!\n");
-
-
                         continue;
                     }
 
@@ -77,19 +67,16 @@
 
                     if (!gameWord.Contains(key))
                     {
-                        tries--;
-
-                        if (tries > 0)
+                        lives--;
+                        if (lives > 0)
                         {
-
-                            Console.WriteLine($"\nsorry this letter {key} is not in the word try again, {tries} tries left");
+                            Console.WriteLine($"\nsorry this letter {key} is not in the word try again, {lives} tries left");
                             continue;
                         }
                     }
-
                 }
 
-                if (tries > 0)
+                if (lives > 0)
                 {
                     Console.WriteLine($"\nWell done! You found the secret word!! ({gameWord})\n");
                 }
@@ -99,11 +86,11 @@
                 }
 
                 Console.WriteLine($"\nDo you want to play again? Please presse ({PLAY_CHOICE}) for 'yes' to continue , or anything else to leave the game!\n");
-                result = Console.ReadKey().Key.ToString();
+                string replay = Console.ReadKey().Key.ToString();
 
                 Console.Clear();
 
-                if (result == PLAY_CHOICE)
+                if (replay == PLAY_CHOICE)
                 {
                     Console.WriteLine("\nOK! Let's play!!\n");
                     Console.WriteLine("******************\n");
@@ -113,7 +100,6 @@
                     Console.WriteLine("\nOK! Goodbuy!");
                     break;
                 }
-
             }
         }
     }

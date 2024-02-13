@@ -1,13 +1,10 @@
 ﻿using System.Linq;
-
 namespace hangman2
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-
-
             while (true)
             {
                 const string PLAY_CHOICE = "Y";
@@ -37,7 +34,6 @@ namespace hangman2
                     foreach (var character in gameWord)
                     {
                         string letter = character.ToString().ToLower();
-
                         if (letterList.Contains(letter))
                         {
                             Console.Write(letter);
@@ -56,10 +52,11 @@ namespace hangman2
                     {
                         break;
                     }
+
                     Console.WriteLine("\nplease enter a letter\n");
+
                     ConsoleKeyInfo keyInfo = Console.ReadKey();
                     Console.WriteLine(string.Empty);
-
                     char key = keyInfo.KeyChar;
 
                     if (!char.IsLetter(key))
@@ -114,10 +111,6 @@ namespace hangman2
                     break;
                 }
             }
-
-
         }
-
-
     }
 }

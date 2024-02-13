@@ -1,9 +1,13 @@
-﻿namespace hangman2
+﻿using System.Linq;
+
+namespace hangman2
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+
+
             while (true)
             {
                 const string PLAY_CHOICE = "Y";
@@ -11,16 +15,16 @@
 
                 List<string> letterList = new List<string>();
                 List<string> wordList = new List<string>()
-                {
-                    "apple",
-                    "table",
-                    "rock",
-                    "computer",
-                    "project",
-                    "beach",
-                    "keyboard",
-                    "astronaut"
-                };
+                            {
+                                "apple",
+                                "table",
+                                "rock",
+                                "computer",
+                                "project",
+                                "beach",
+                                "keyboard",
+                                "astronaut"
+                            };
 
                 string gameWord = wordList[new Random().Next(0, wordList.Count - 1)];
 
@@ -52,18 +56,27 @@
                     {
                         break;
                     }
-
                     Console.WriteLine("\nplease enter a letter\n");
-                    string key = Console.ReadKey().KeyChar.ToString().ToLower();
+                    ConsoleKeyInfo keyInfo = Console.ReadKey();
                     Console.WriteLine(string.Empty);
 
-                    if (letterList.Contains(key))
+                    char key = keyInfo.KeyChar;
+
+                    if (!char.IsLetter(key))
                     {
-                        Console.WriteLine($"\nthe letter {key} is already given!\n");
+                        Console.WriteLine("\nPlease enter only alphabetical characters!");
                         continue;
                     }
 
-                    letterList.Add(key);
+                    key = char.ToLower(key);
+
+                    if (letterList.Contains(key.ToString()))
+                    {
+                        Console.WriteLine($"\nthe letter {keyInfo} is already given!\n");
+                        continue;
+                    }
+
+                    letterList.Add(key.ToString());
 
                     if (!gameWord.Contains(key))
                     {
@@ -101,6 +114,10 @@
                     break;
                 }
             }
+
+
         }
+
+
     }
 }

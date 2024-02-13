@@ -23,7 +23,7 @@ namespace hangman2
                                 "astronaut"
                             };
 
-                string gameWord = wordList[new Random().Next(wordList.Count)];
+                string gameWord = wordList[new Random().Next(0, wordList.Count)];
                 Console.WriteLine("Welcome to Hangman! \n");
                 Console.WriteLine("\nplease enter a letter\n\n");
 

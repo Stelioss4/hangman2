@@ -69,7 +69,7 @@ namespace hangman2
 
                     if (letterList.Contains(key.ToString()))
                     {
-                        Console.WriteLine($"\nthe letter {keyInfo} is already given!\n");
+                        Console.WriteLine($"\nthe letter {key} is already given!\n");
                         continue;
                     }
 

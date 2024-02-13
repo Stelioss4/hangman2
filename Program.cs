@@ -23,9 +23,9 @@ namespace hangman2
                                 "astronaut"
                             };
 
-                string gameWord = wordList[new Random().Next(0, wordList.Count - 1)];
-
+                string gameWord = wordList[new Random().Next(wordList.Count)];
                 Console.WriteLine("Welcome to Hangman! \n");
+                Console.WriteLine("\nplease enter a letter\n\n");
 
                 int lives = TRIES;
                 while (lives != 0)
@@ -53,8 +53,6 @@ namespace hangman2
                         break;
                     }
 
-                    Console.WriteLine("\nplease enter a letter\n");
-
                     ConsoleKeyInfo keyInfo = Console.ReadKey();
                     Console.WriteLine(string.Empty);
                     char key = keyInfo.KeyChar;
@@ -69,7 +67,7 @@ namespace hangman2
 
                     if (letterList.Contains(key.ToString()))
                     {
-                        Console.WriteLine($"\nthe letter {key} is already given!\n");
+                        Console.WriteLine($"\nthe letter ({key}) is already given!\n");
                         continue;
                     }
 
@@ -80,8 +78,7 @@ namespace hangman2
                         lives--;
                         if (lives > 0)
                         {
-                            Console.WriteLine($"\nsorry this letter {key} is not in the word try again, {lives} tries left");
-                            continue;
+                            Console.WriteLine($"\nSorry the letter ({key}) is not in the word try again, {lives} tries left");
                         }
                     }
                 }
@@ -111,6 +108,7 @@ namespace hangman2
                     break;
                 }
             }
+
         }
     }
 }

@@ -28,7 +28,7 @@ namespace hangman2
 
                 List<string> letterList = new List<string>();
 
-                Console.WriteLine("\nplease enter a letter\n\n");
+                Console.WriteLine("\nplease write letters to find the secret word\n\n");
 
                 int lives = TRIES;
                 while (lives != 0)

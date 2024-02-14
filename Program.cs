@@ -8,6 +8,7 @@ namespace hangman2
             const string PLAY_CHOICE = "Y";
             const int TRIES = 5;
 
+            Console.WriteLine("Welcome to Hangman! \n");
             Random random = new Random();
             List<string> wordList = new List<string>()
                             {
@@ -27,7 +28,6 @@ namespace hangman2
 
                 List<string> letterList = new List<string>();
 
-                Console.WriteLine("Welcome to Hangman! \n");
                 Console.WriteLine("\nplease enter a letter\n\n");
 
                 int lives = TRIES;

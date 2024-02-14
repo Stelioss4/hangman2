@@ -5,7 +5,7 @@ namespace hangman2
     {
         static void Main(string[] args)
         {
-            const string PLAY_CHOICE = "Y";
+            const char PLAY_CHOICE = 'y';
             const int TRIES = 5;
 
             Console.WriteLine("Welcome to Hangman! \n");
@@ -24,7 +24,7 @@ namespace hangman2
                                 "smartphone",
                                 "headphones",
                                 "speaker",
-                                "microphone", 
+                                "microphone",
                                 "camera",
                                 "mountain",
                                 "river",
@@ -50,7 +50,7 @@ namespace hangman2
                 while (lives != 0)
                 {
                     int lettersleft = 0;
-                    foreach (var character in gameWord)
+                    foreach (char character in gameWord)
                     {
                         string letter = character.ToString().ToLower();
                         if (letterList.Contains(letter))
@@ -64,8 +64,7 @@ namespace hangman2
                         }
                     }
 
-                    Console.WriteLine(string.Empty);
-                    Console.WriteLine(String.Join(" , ", letterList));
+                    Console.WriteLine($"\n{String.Join(" , ", letterList)}\n");
 
                     if (lettersleft == 0)
                     {
@@ -73,7 +72,6 @@ namespace hangman2
                     }
 
                     ConsoleKeyInfo keyInfo = Console.ReadKey();
-                    Console.WriteLine(string.Empty);
                     char key = keyInfo.KeyChar;
 
                     if (!char.IsLetter(key))
@@ -112,7 +110,7 @@ namespace hangman2
                 }
 
                 Console.WriteLine($"\nDo you want to play again? Please presse ({PLAY_CHOICE}) for 'yes' to continue , or anything else to leave the game!\n");
-                string replay = Console.ReadKey().Key.ToString();
+                char replay = char.ToLower(Console.ReadKey().KeyChar);
 
                 Console.Clear();
 

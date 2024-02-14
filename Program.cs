@@ -5,13 +5,11 @@ namespace hangman2
     {
         static void Main(string[] args)
         {
-            while (true)
-            {
-                const string PLAY_CHOICE = "Y";
-                const int TRIES = 5;
+            const string PLAY_CHOICE = "Y";
+            const int TRIES = 5;
 
-                List<string> letterList = new List<string>();
-                List<string> wordList = new List<string>()
+            Random random = new Random();
+            List<string> wordList = new List<string>()
                             {
                                 "apple",
                                 "table",
@@ -23,7 +21,12 @@ namespace hangman2
                                 "astronaut"
                             };
 
-                string gameWord = wordList[new Random().Next(0, wordList.Count)];
+            while (true)
+            {
+                string gameWord = wordList[random.Next(0, wordList.Count)];
+
+                List<string> letterList = new List<string>();
+
                 Console.WriteLine("Welcome to Hangman! \n");
                 Console.WriteLine("\nplease enter a letter\n\n");
 

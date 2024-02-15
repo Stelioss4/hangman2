@@ -42,20 +42,22 @@ namespace hangman2
             {
                 string gameWord = wordList[random.Next(0, wordList.Count)];
 
-                List<string> letterList = new List<string>();
+                List<char> letterList = new List<char>();
 
                 Console.WriteLine("\nplease write letters to find the secret word\n\n");
 
                 int lives = TRIES;
                 while (lives != 0)
                 {
+                    
                     int lettersleft = 0;
+                    Console.WriteLine();
                     foreach (char character in gameWord)
                     {
-                        string letter = character.ToString().ToLower();
+                        char letter = character;
                         if (letterList.Contains(letter))
                         {
-                            Console.Write(letter);
+                            Console.Write($"{letter}");
                         }
                         else
                         {
@@ -63,14 +65,14 @@ namespace hangman2
                             lettersleft++;
                         }
                     }
-
-                    Console.WriteLine($"\n{String.Join(" , ", letterList)}\n");
+                    
+                    Console.WriteLine($"\n\n{String.Join(" , ", letterList)}\n");
 
                     if (lettersleft == 0)
                     {
                         break;
                     }
-
+                    Console.WriteLine();
                     ConsoleKeyInfo keyInfo = Console.ReadKey();
                     char key = keyInfo.KeyChar;
 
@@ -82,13 +84,13 @@ namespace hangman2
 
                     key = char.ToLower(key);
 
-                    if (letterList.Contains(key.ToString()))
+                    if (letterList.Contains(key))
                     {
                         Console.WriteLine($"\nthe letter ({key}) is already given!\n");
                         continue;
                     }
 
-                    letterList.Add(key.ToString());
+                    letterList.Add(key);
 
                     if (!gameWord.Contains(key))
                     {

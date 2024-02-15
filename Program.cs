@@ -72,7 +72,7 @@ namespace hangman2
                     {
                         break;
                     }
-                    Console.WriteLine();
+
                     ConsoleKeyInfo keyInfo = Console.ReadKey();
                     char key = keyInfo.KeyChar;
 
